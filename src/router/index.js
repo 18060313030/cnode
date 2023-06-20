@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
-
+NProgress.configure({
+  showSpinner: false
+})
 const routes = [
   {
     path: '/',
@@ -31,6 +34,15 @@ const router = new VueRouter({
   scrollBehavior (to, from, savedPosition) {
     return { y: 0 }
   }
+})
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+})
+
+router.afterEach((to) => {
+  // document.title = to.meta.title !== undefined ? '优医问诊--' + to.meta.title : ''
+  NProgress.done()
 })
 
 export default router

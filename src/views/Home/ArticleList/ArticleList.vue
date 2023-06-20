@@ -29,10 +29,12 @@
 
 <script>
 import formatter from '@/utils/formatter.js'
+
 import { mapState } from 'vuex'
 export default {
   name: 'ArticleListPage',
   props: ['tab'],
+
   data () {
     return {
       okay: ['', 'good']
